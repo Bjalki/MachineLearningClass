@@ -1,0 +1,69 @@
+To install miniconda on Linux (based on https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html) substitute the latest installer link from https://docs.conda.io/en/latest/miniconda.html#linux-installers below.
+
+Updated commands for CS Linux machines as of 4/11/23:
+
+wget https://repo.anaconda.com/miniconda/Miniconda3-py310_23.1.0-1-Linux-x86_64.sh
+chmod a+x Miniconda3-py310_23.1.0-1-Linux-x86_64.sh
+sh ./Miniconda3-py310_23.1.0-1-Linux-x86_64.sh
+
+(follow prompts and agree to licensing and default location, type "yes" to have it run "conda init" for you, restart shell)
+
+Optional: To remove "(base) " from the beginning of your new shell prompt:
+
+conda config --set auto_activate_base False
+source ~/.bashrc
+
+(source of these commands: https://askubuntu.com/questions/1026383/why-does-base-appear-in-front-of-my-terminal-prompt)
+
+-----------------------------------------------------------------------------
+
+To create a new Python 3.10 conda environment (e.g. "cs371") and then make it available to jupyter notebooks, execute the following:
+
+conda create -n cs371 python=3.10 pip ipykernel
+
+Later, you'll likely want to add additional packages, and one can do this (e.g. with numpy, pandas, matplotlib, scipy, scikit-learn) with the command:
+
+conda install -n cs371 numpy pandas matplotlib scipy scikit-learn
+
+Other packages I have used in DS256:
+seaborn (visualization)
+plotly (visualization)
+umap (dimensionality reduction)
+catboost (boosted decision trees; use instead of xgboost; at time of writing not supported for Python 3.11)
+psycopg2 (databases)
+sqlalchemy (databases)
+
+-----------------------------------------------------------------------------
+
+To list your created environments:
+
+conda env list
+
+-----------------------------------------------------------------------------
+
+To copy my notebooks to your filespace:
+
+cp -r ~tneller/public_html/cs371/ipynb .
+
+-----------------------------------------------------------------------------
+
+To set up VS Code:
+
+code &
+
+Get out of "Restricted Mode" by clicking "Manage" and pressing the "Trust" button.
+File -> New File... then choose new Jupyter Notebook.
+In the lower-right, where it says "Do you want to install the recommended extensions for Python?" click the "Install" button.
+After it's done installing, you can close tabs and exit VS Code.
+
+-----------------------------------------------------------------------------
+
+Example of how to open one of my DS256 notebooks:
+
+cd ~/ipynb/ds256/01-intro/
+code hw1.ipynb &
+
+In "Do you trust the authors of these files" window, check "Remember by decision for all workspaces" and click the "Open" button.
+
+Select your "cs371" interpreter in the upper right corner.  Click "Run all".
+
